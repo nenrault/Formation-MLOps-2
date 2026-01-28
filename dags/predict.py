@@ -26,7 +26,6 @@ def predict():
     @task
     def predict_with_io_task(feature_path: str) -> None:
         predict_with_io(feature_path=feature_path, model_path=MODEL_PATH, predictions_folder=PREDICTIONS_FOLDER)
-        return features_path
 
     # Start completing predict task
     # predict = PythonOperator()
