@@ -28,5 +28,5 @@ jobs:
       - name: Run behave tests
         run: behave tests/test_functional/features
       - name: Display test pyramind
-      run: ./tests/tests_pyramid.sh
+        run: ./tests/tests_pyramid.sh
 
