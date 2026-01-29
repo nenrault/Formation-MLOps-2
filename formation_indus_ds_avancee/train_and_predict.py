@@ -9,7 +9,6 @@ from sklearn.ensemble import RandomForestRegressor
 
 def train_model_with_io(features_path: str, model_registry_folder: str) -> None:
     features = pd.read_parquet(features_path)
-
     train_model(features, model_registry_folder)
 
 
@@ -17,8 +16,8 @@ def train_model(features: pd.DataFrame, model_registry_folder: str) -> None:
     target = 'Ba_avg'
     X = features.drop(columns=[target])
     y = features[target]
-    with mlflow.start_run():
-        # insert autolog here ...
+    with mlflow.start_run() as run:
+        mlflow.sklearn.autolog()
         model = RandomForestRegressor(n_estimators=1, max_depth=10, n_jobs=1)
         model.fit(X, y)
     time_str = time.strftime('%Y%m%d-%H%M%S')
