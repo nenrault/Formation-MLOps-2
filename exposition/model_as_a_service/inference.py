@@ -13,7 +13,7 @@ def health():
 
 @app.route('/predict', methods=['GET'])
 def predict_endpoint():
-    received_wind_speed_avg = request.args.get('Ws1_avg'))
+    received_wind_speed_avg = request.args.get('Ws1_avg')
     received_data_df = pd.DataFrame(
     {"Wind_turbine_name": "R80721", "Date_time": "2017-02-08T08:00:00+01:00", "Ba_avg": 44.99, "Ba_min": 44.99,
      "Ba_max": 44.99, "Ba_std": 0.0, "Rt_avg": 14.0, "Rt_min": 14.0, "Rt_max": 14.0, "Rt_std": 0.0,
