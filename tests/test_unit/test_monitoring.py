@@ -37,4 +37,4 @@ def test_monitor_with_io_should_write_predictions_mean_to_db(mocked_read_csv):
 
 def test_monitoring_table_name_as_been_changed():
     # Please change monitoring table name so that you don't overwrite monitoring from other attendees
-    assert MONITORING_TABLE_NAME != "monitoring_lolo"
+    assert MONITORING_TABLE_NAME != "monitoring"
