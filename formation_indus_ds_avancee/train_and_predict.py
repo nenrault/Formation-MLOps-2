@@ -4,7 +4,7 @@ import time
 import joblib
 import mlflow
 import pandas as pd
-from sklearn.ensemble import RandomForestRegressor
+from xgboost import XGBRegressor
 
 
 def train_model_with_io(features_path: str, model_registry_folder: str) -> None:
@@ -19,7 +19,7 @@ def train_model(features: pd.DataFrame, model_registry_folder: str) -> None:
     y = features[target]
     with mlflow.start_run():
         mlflow.sklearn.autolog(log_models=True)
-        model = RandomForestRegressor(n_estimators=1, max_depth=10, n_jobs=1)
+        model = XGBRegressor(n_estimators=100, max_depth=10, learning_rate=0.1, n_jobs=1)
         model.fit(X, y)
     time_str = time.strftime('%Y%m%d-%H%M%S')
     joblib.dump(model, os.path.join(model_registry_folder, time_str + '.joblib'))
