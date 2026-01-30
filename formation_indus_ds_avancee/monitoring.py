@@ -21,6 +21,13 @@ def monitor_with_io(predictions_folder: str, db_con_str: str, monitoring_table_n
 
 def monitor(latest_predictions: pd.DataFrame) -> pd.DataFrame:
     # Start filling function
-    monitoring_df = pd.DataFrame
+    mean_prediction = latest_predictions['predictions'].mean()
+    run_datetime = latest_predictions['predictions_time'].max()
+    
+    monitoring_df = pd.DataFrame({
+        'datetime': [run_datetime],
+        'mean_prediction': [mean_prediction]
+    })
     # End filling function
     return monitoring_df
+
